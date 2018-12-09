@@ -6,8 +6,13 @@ SynthEmilion/SynthEmilion.vcxproj.filters
 SynthEmilion/SynthEmilion.vcxproj.user
 UI/x64
 UI/GeneratedFiles/Debug
+UI/GeneratedFiles/Release
 UI/UI.vcxproj.user
 Communication/x64
+Communication/Debug
+Communication/Release
 UiViewer/x64
 UiViewer/GeneratedFiles/Debug
+UiViewer/GeneratedFiles/Release
 UiViewer/UiViewer.vcxproj.filters
+UiViewer/UiViewer.vcxproj.user
