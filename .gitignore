@@ -2,8 +2,7 @@ x64/
 .vs/
 SynthEmilion.VC.db
 SynthEmilion.VC.VC.opendb
-SynthEmilion/SynthEmilion.vcxproj.filters
-SynthEmilion/SynthEmilion.vcxproj.user
+Vst/Vst.user
 UI/x64
 UI/GeneratedFiles/Debug
 UI/GeneratedFiles/Release
