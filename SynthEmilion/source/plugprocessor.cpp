@@ -25,8 +25,8 @@ Steinberg::tresult PLUGIN_API PlugProcessor::initialize (FUnknown* context)
 
 	//---create Audio In/Out buses------
 	// we want a stereo Input and a Stereo Output
-	addAudioInput (STR16 ("AudioInput"), Steinberg::Vst::SpeakerArr::kStereo);
 	addAudioOutput (STR16 ("AudioOutput"), Steinberg::Vst::SpeakerArr::kStereo);
+	addEventInput(STR16("MidiInput"));
 
 	return Steinberg::kResultTrue;
 }
@@ -38,7 +38,7 @@ Steinberg::tresult PLUGIN_API PlugProcessor::setBusArrangements (Steinberg::Vst:
 	Steinberg::int32 numOuts)
 {
 	// we only support one in and output bus and these buses must have the same number of channels
-	if (numIns == 1 && numOuts == 1 && inputs[0] == outputs[0])
+	if (numIns == 0 && numOuts == 1)
 	{
 		return AudioEffect::setBusArrangements (inputs, numIns, outputs, numOuts);
 	}
