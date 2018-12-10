@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -21,6 +22,7 @@ class Ui_MainWidget
 public:
     QLabel *paramChangeLabel;
     QLabel *activeCompLabel;
+    QPushButton *reloadQss_button;
 
     void setupUi(QWidget *MainWidget)
     {
@@ -33,6 +35,9 @@ public:
         activeCompLabel = new QLabel(MainWidget);
         activeCompLabel->setObjectName(QStringLiteral("activeCompLabel"));
         activeCompLabel->setGeometry(QRect(10, 390, 611, 16));
+        reloadQss_button = new QPushButton(MainWidget);
+        reloadQss_button->setObjectName(QStringLiteral("reloadQss_button"));
+        reloadQss_button->setGeometry(QRect(10, 420, 75, 23));
 
         retranslateUi(MainWidget);
 
@@ -44,6 +49,7 @@ public:
         MainWidget->setWindowTitle(QApplication::translate("MainWidget", "MainWidget", nullptr));
         paramChangeLabel->setText(QApplication::translate("MainWidget", "Param", nullptr));
         activeCompLabel->setText(QApplication::translate("MainWidget", "Active component", nullptr));
+        reloadQss_button->setText(QApplication::translate("MainWidget", "Reload QSS", nullptr));
     } // retranslateUi
 
 };

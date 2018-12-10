@@ -57,6 +57,12 @@
     <QtMoc Include="Global\MainWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="ComponentsPanels\OperatorPanel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="ComponentsPanels\ComponentPanel.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Global\SynthEmilionWidget.cpp">
@@ -80,6 +86,12 @@
     <ClCompile Include="Events\SynthEmilionEvent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ComponentsPanels\OperatorPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ComponentsPanels\ComponentPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Components\OperatorComponent.ui">
@@ -89,6 +101,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="Global\MainWidget.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="ComponentsPanels\OperatorPanel.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

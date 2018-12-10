@@ -20,7 +20,7 @@ QT_BEGIN_NAMESPACE
 class Ui_OperatorsListComponent
 {
 public:
-    QLabel *label;
+    QLabel *listTitle_label;
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
 
@@ -29,21 +29,29 @@ public:
         if (OperatorsListComponent->objectName().isEmpty())
             OperatorsListComponent->setObjectName(QStringLiteral("OperatorsListComponent"));
         OperatorsListComponent->resize(616, 258);
-        label = new QLabel(OperatorsListComponent);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(0, 0, 61, 31));
+        listTitle_label = new QLabel(OperatorsListComponent);
+        listTitle_label->setObjectName(QStringLiteral("listTitle_label"));
+        listTitle_label->setGeometry(QRect(0, 0, 61, 31));
         QFont font;
         font.setPointSize(22);
         font.setBold(true);
         font.setWeight(75);
-        label->setFont(font);
+        listTitle_label->setFont(font);
+        listTitle_label->setProperty("class", QVariant(QStringLiteral("list-title")));
         scrollArea = new QScrollArea(OperatorsListComponent);
         scrollArea->setObjectName(QStringLiteral("scrollArea"));
         scrollArea->setGeometry(QRect(0, 40, 611, 211));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
+        scrollArea->setSizePolicy(sizePolicy);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 609, 209));
+        sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents->setSizePolicy(sizePolicy);
         scrollArea->setWidget(scrollAreaWidgetContents);
 
         retranslateUi(OperatorsListComponent);
@@ -54,7 +62,7 @@ public:
     void retranslateUi(QWidget *OperatorsListComponent)
     {
         OperatorsListComponent->setWindowTitle(QApplication::translate("OperatorsListComponent", "OperatorsListComponent", nullptr));
-        label->setText(QApplication::translate("OperatorsListComponent", "OPS", nullptr));
+        listTitle_label->setText(QApplication::translate("OperatorsListComponent", "OPS", nullptr));
     } // retranslateUi
 
 };

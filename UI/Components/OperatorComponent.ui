@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>141</width>
-    <height>127</height>
+    <height>81</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -45,7 +45,7 @@
     </rect>
    </property>
    <property name="accessibleName">
-    <string>Pitch</string>
+    <string>Pan</string>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -67,7 +67,7 @@
     </rect>
    </property>
    <property name="accessibleName">
-    <string>Pitch</string>
+    <string>Vol</string>
    </property>
    <property name="locale">
     <locale language="English" country="UnitedStates"/>
@@ -130,28 +130,25 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
-  <widget class="QCheckBox" name="activation_checkbox">
+  <widget class="QPushButton" name="activation_button">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>91</width>
-     <height>17</height>
+     <width>75</width>
+     <height>23</height>
     </rect>
    </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::RightToLeft</enum>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
    </property>
    <property name="text">
     <string>Operator 10</string>
    </property>
-   <property name="checked">
+   <property name="checkable">
     <bool>true</bool>
    </property>
   </widget>

@@ -7,21 +7,24 @@
 #include "SynthEmilionMessage.h"
 #include "ui_global.h"
 
+namespace SQU {
+	namespace UI {
+		class OperatorComponent : public SynthEmilionComponent
+		{
+			Q_OBJECT
 
-class UI_EXPORT OperatorComponent : public SynthEmilionComponent
-{
-	Q_OBJECT
+		public:
+			OperatorComponent(int number, QWidget *parent = Q_NULLPTR);
+			~OperatorComponent();
 
-public:
-	OperatorComponent(int number, QWidget *parent = Q_NULLPTR);
-	~OperatorComponent();
+		private slots:
+			void pitchChangedHandle(int value);
+			void panChangedHandle(int value);
+			void volChangedHandle(int value);
 
-	private slots:
-	void pitchChangedHandle(int value);
-	void panChangedHandle(int value);
-	void volChangedHandle(int value);
+		private:
 
-private:
-
-	Ui::OperatorComponent ui;
-};
+			Ui::OperatorComponent ui;
+		};
+	}
+}

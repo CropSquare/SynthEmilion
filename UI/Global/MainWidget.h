@@ -7,23 +7,30 @@
 #include "SynthEmilionMessage.h"
 #include "ui_global.h"
 
-class UI_EXPORT MainWidget : public SynthEmilionWidget
-{
-	Q_OBJECT
+namespace SQU {
+	namespace UI {
+		class UI_EXPORT MainWidget : public SynthEmilionWidget
+		{
+			Q_OBJECT
 
-public:
-	MainWidget(QWidget *parent = Q_NULLPTR);
-	~MainWidget();
+		public:
+			MainWidget(QWidget *parent = Q_NULLPTR);
+			~MainWidget();
 
-	void notifySynthEmilionMessage(std::shared_ptr<SQU::Comm::SynthEmilionMessage> message) override;
-	void notifyComponentFocus(SynthEmilionComponent *component) override;
+			void notifySynthEmilionMessage(std::shared_ptr<Comm::SynthEmilionMessage> message) override;
+			void notifyComponentFocus(SynthEmilionComponent *component) override;
 
-private:
-	Ui::MainWidget ui;
-	OperatorsListComponent* opList;
+		private slots:
+			void reloadQss();
 
-	int paramEventNb;
-	int activeEventNb;
+		private:
+			Ui::MainWidget ui;
+			OperatorsListComponent* opList;
 
-	SynthEmilionComponent* currentlyFocusedComponent;
-};
+			int paramEventNb;
+			int activeEventNb;
+
+			SynthEmilionComponent* currentlyFocusedComponent;
+		};
+	}
+}

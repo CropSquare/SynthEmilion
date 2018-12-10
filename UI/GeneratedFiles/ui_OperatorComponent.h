@@ -12,9 +12,9 @@
 #include <QtCore/QLocale>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDial>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -28,13 +28,13 @@ public:
     QLabel *pitch_label;
     QLabel *pan_label;
     QLabel *vol_label;
-    QCheckBox *activation_checkbox;
+    QPushButton *activation_button;
 
     void setupUi(QWidget *OperatorComponent)
     {
         if (OperatorComponent->objectName().isEmpty())
             OperatorComponent->setObjectName(QStringLiteral("OperatorComponent"));
-        OperatorComponent->resize(141, 127);
+        OperatorComponent->resize(141, 81);
         pitch_dial = new QDial(OperatorComponent);
         pitch_dial->setObjectName(QStringLiteral("pitch_dial"));
         pitch_dial->setGeometry(QRect(0, 30, 41, 51));
@@ -66,15 +66,15 @@ public:
         vol_label->setObjectName(QStringLiteral("vol_label"));
         vol_label->setGeometry(QRect(100, 20, 41, 20));
         vol_label->setAlignment(Qt::AlignCenter);
-        activation_checkbox = new QCheckBox(OperatorComponent);
-        activation_checkbox->setObjectName(QStringLiteral("activation_checkbox"));
-        activation_checkbox->setGeometry(QRect(0, 0, 91, 17));
-        QFont font;
-        font.setBold(true);
-        font.setWeight(75);
-        activation_checkbox->setFont(font);
-        activation_checkbox->setLayoutDirection(Qt::RightToLeft);
-        activation_checkbox->setChecked(true);
+        activation_button = new QPushButton(OperatorComponent);
+        activation_button->setObjectName(QStringLiteral("activation_button"));
+        activation_button->setGeometry(QRect(0, 0, 75, 23));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(activation_button->sizePolicy().hasHeightForWidth());
+        activation_button->setSizePolicy(sizePolicy);
+        activation_button->setCheckable(true);
 
         retranslateUi(OperatorComponent);
 
@@ -88,15 +88,15 @@ public:
         pitch_dial->setAccessibleName(QApplication::translate("OperatorComponent", "Pitch", nullptr));
 #endif // QT_NO_ACCESSIBILITY
 #ifndef QT_NO_ACCESSIBILITY
-        pan_dial->setAccessibleName(QApplication::translate("OperatorComponent", "Pitch", nullptr));
+        pan_dial->setAccessibleName(QApplication::translate("OperatorComponent", "Pan", nullptr));
 #endif // QT_NO_ACCESSIBILITY
 #ifndef QT_NO_ACCESSIBILITY
-        vol_dial->setAccessibleName(QApplication::translate("OperatorComponent", "Pitch", nullptr));
+        vol_dial->setAccessibleName(QApplication::translate("OperatorComponent", "Vol", nullptr));
 #endif // QT_NO_ACCESSIBILITY
         pitch_label->setText(QApplication::translate("OperatorComponent", "Pitch", nullptr));
         pan_label->setText(QApplication::translate("OperatorComponent", "Pan", nullptr));
         vol_label->setText(QApplication::translate("OperatorComponent", "Vol", nullptr));
-        activation_checkbox->setText(QApplication::translate("OperatorComponent", "Operator 10", nullptr));
+        activation_button->setText(QApplication::translate("OperatorComponent", "Operator 10", nullptr));
     } // retranslateUi
 
 };

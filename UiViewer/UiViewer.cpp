@@ -6,7 +6,7 @@ UiViewer::UiViewer(QWidget *parent)
 {
 	ui.setupUi(this);
 
-	MainWidget mainWidget = new MainWidget(this);
+	SQU::UI::MainWidget mainWidget = new SQU::UI::MainWidget(this);
 	mainWidget.show();
 
 	setFixedWidth(mainWidget.width());

@@ -5,13 +5,17 @@
 #include <memory>
 #include "ui_global.h"
 
-class SynthEmilionEvent : public QEvent
-{
-public:
-	SynthEmilionEvent(SQU::Comm::ComponentType componentType, int componentNumber, SQU::Comm::ParameterType parameter);
-	~SynthEmilionEvent();
+namespace SQU {
+	namespace UI {
+		class SynthEmilionEvent : public QEvent
+		{
+		public:
+			SynthEmilionEvent(Comm::ComponentType componentType, int componentNumber, Comm::ParameterType parameter);
+			~SynthEmilionEvent();
 
-	static const QEvent::Type SynthEmilionEventType = static_cast<QEvent::Type>(2000);
+			static const QEvent::Type SynthEmilionEventType = static_cast<QEvent::Type>(2000);
 
-	std::shared_ptr<SQU::Comm::SynthEmilionMessage> message;
-};
+			std::shared_ptr<SQU::Comm::SynthEmilionMessage> message;
+		};
+	}
+}

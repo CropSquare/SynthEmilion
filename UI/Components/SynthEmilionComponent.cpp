@@ -4,187 +4,186 @@
 #include "../Events/SynthEmilionEvent.h"
 
 
-SynthEmilionComponent::SynthEmilionComponent(int number, SQU::Comm::ComponentType componentType, QWidget *parent)
-	: SynthEmilionWidget(parent)
-{
-	this->componentType = componentType;
-	this->number = number;
-}
-
-SynthEmilionComponent::~SynthEmilionComponent()
-{
-}
-
-QString SynthEmilionComponent::getObjectTypeName()
-{
-	switch (componentType)
-	{
-	case SQU::Comm::ComponentType::Main:
-		return "Main";
-	case SQU::Comm::ComponentType::Operator:
-		return "Operator";
-	case SQU::Comm::ComponentType::Envelop:
-		return "Envelop";
-	case SQU::Comm::ComponentType::Filter:
-		return "Filter";
-	case SQU::Comm::ComponentType::LFO:
-		return "LFO";
-	default:
-		return "Unknown";
-	}
-}
-
-void SynthEmilionComponent::setActivationControl(QAbstractButton *button)
-{
-	this->activationButton = button;
-
-	QString numString = QString::number(number + 1);
-	QString objectName = getObjectTypeName() + " " + numString;
-	activationButton->setText(objectName);
-
-	refreshActiveState(button->isChecked());
-
-	// TODO : Connect to button so param changed is handled
-	connect(button, SIGNAL(stateChanged(int)), this, SLOT(activationChangedHandle(int)));
-}
-
-void SynthEmilionComponent::setDefaultBackColor(QString color)
-{
-	setStyleSheet("background-color:" + color + ";");
-}
-
-void SynthEmilionComponent::activate() {
-	activationButton->setChecked(true);
-}
-
-void SynthEmilionComponent::deactivate() {
-	activationButton->setChecked(false);
-}
-
-
-int SynthEmilionComponent::getNumber()
-{
-	return number;
-}
-
-void SynthEmilionComponent::activationChangedHandle(int state)
-{
-	bool active = (state == Qt::CheckState::Checked);
-
-	refreshActiveState(active);
-
-	sendParameterChangeEventBool(SQU::Comm::ParameterType::ComponentActivation, active);
-}
-
-void SynthEmilionComponent::refreshActiveState(bool active)
-{
-	this->number = number;
-
-	int finalWidth = 0;
-	int finalHeight = 0;
-
-	foreach(QWidget *w, this->findChildren<QWidget *>())
-	{
-		if (w != activationButton)
+namespace SQU {
+	namespace UI {
+		SynthEmilionComponent::SynthEmilionComponent(int number, SQU::Comm::ComponentType componentType, QWidget *parent)
+			: SynthEmilionWidget(parent)
 		{
-			if (active)
+			this->componentType = componentType;
+			this->number = number;
+			this->setProperty("active", false);
+			this->setProperty("alt", number % 2 == 1);
+		}
+
+		SynthEmilionComponent::~SynthEmilionComponent()
+		{
+		}
+
+		QString SynthEmilionComponent::getObjectTypeName()
+		{
+			switch (componentType)
 			{
-				w->show();
-
-				int right = w->x() + w->width();
-				int bottom = w->y() + w->height();
-
-				if (right > finalWidth)
-				{
-					finalWidth = right;
-				}
-
-				if (bottom > finalHeight)
-				{
-					finalHeight = bottom;
-				}
-			}
-			else
-			{
-				w->hide();
+			case SQU::Comm::ComponentType::Main:
+				return "Main";
+			case SQU::Comm::ComponentType::Operator:
+				return "Operator";
+			case SQU::Comm::ComponentType::Envelop:
+				return "Envelop";
+			case SQU::Comm::ComponentType::Filter:
+				return "Filter";
+			case SQU::Comm::ComponentType::LFO:
+				return "LFO";
+			default:
+				return "Unknown";
 			}
 		}
-	}
 
-	QString nbString = QString::number(number + 1);
+		void SynthEmilionComponent::setActivationControl(QAbstractButton *button)
+		{
+			this->activationButton = button;
 
-	if (active)
-	{
-		activationButton->setFixedWidth(91);
-		activationButton->setText(getObjectTypeName() + " " + nbString);
+			bool active = button->isChecked();
 
-		setFixedWidth(finalWidth);
-		setFixedHeight(finalHeight);
-	}
-	else
-	{
-		activationButton->setFixedWidth(41);
-		activationButton->setText(nbString);
+			this->setProperty("active", active);
 
-		setFixedWidth(activationButton->width());
-	}
-}
+			refreshActiveState(active);
+
+			connect(button, SIGNAL(toggled(bool)), this, SLOT(activationChangedHandle(bool)));
+		}
+
+		void SynthEmilionComponent::activate() {
+			activationButton->setChecked(true);
+		}
+
+		void SynthEmilionComponent::deactivate() {
+			activationButton->setChecked(false);
+		}
 
 
-void SynthEmilionComponent::afterSetupUi()
-{
-	installEventFilter(this);
+		int SynthEmilionComponent::getNumber()
+		{
+			return number;
+		}
 
-	QList<QWidget*> widgets = this->findChildren<QWidget*>();
+		void SynthEmilionComponent::activationChangedHandle(bool state)
+		{
+			bool active = state;
 
-	foreach(QWidget *widget, widgets)
-	{
-		widget->installEventFilter(this);
-	}
-}
+			this->setProperty("active", active);
 
-bool SynthEmilionComponent::eventFilter(QObject *obj, QEvent *event)
-{
-	if (event->type() == QEvent::MouseButtonPress)
-	{
-		ComponentFocusEvent *event = new ComponentFocusEvent(this);
+			refreshActiveState(active);
 
-		QApplication::postEvent(this, event);
-	}
+			this->style()->unpolish(this);
+			this->style()->polish(this);
+
+			sendParameterChangeEventBool(Comm::ParameterType::ComponentActivation, active);
+		}
 		
-	return false;
-}
+		void SynthEmilionComponent::refreshActiveState(bool active)
+		{
+			this->number = number;
 
-QString SynthEmilionComponent::getObjectFullName()
-{
-	return getObjectTypeName() + " " + QString::number(number + 1);
-}
+			QString activationButtonText = active ? getObjectFullName() : QString::number(number + 1);
+
+			activationButton->setText(activationButtonText);
+
+			QFontMetrics metric(activationButton->font());
+			activationButton->setFixedWidth(metric.horizontalAdvance(activationButtonText) + 20);
+
+			int finalWidth = activationButton->width();
+			int finalHeight = activationButton->height();
+
+			foreach(QWidget *w, this->findChildren<QWidget *>())
+			{
+				if (w != activationButton)
+				{
+					if (active)
+					{
+						w->show();
+
+						int right = w->x() + w->width();
+						int bottom = w->y() + w->height();
+
+						if (right > finalWidth)
+						{
+							finalWidth = right;
+						}
+
+						if (bottom > finalHeight)
+						{
+							finalHeight = bottom;
+						}
+					}
+					else
+					{
+						w->hide();
+					}
+				}
+
+				w->style()->unpolish(w);
+				w->style()->polish(w);
+			}
+
+			setFixedWidth(finalWidth);
+			//setFixedHeight(finalHeight);
+		}
+
+		void SynthEmilionComponent::afterSetupUi()
+		{
+			installEventFilter(this);
+
+			QList<QWidget*> widgets = this->findChildren<QWidget*>();
+
+			foreach(QWidget *widget, widgets)
+			{
+				widget->installEventFilter(this);
+			}
+		}
+
+		bool SynthEmilionComponent::eventFilter(QObject *obj, QEvent *event)
+		{
+			if (event->type() == QEvent::MouseButtonPress)
+			{
+				ComponentFocusEvent *event = new ComponentFocusEvent(this);
+
+				QApplication::postEvent(this, event);
+			}
+
+			return false;
+		}
+
+		QString SynthEmilionComponent::getObjectFullName()
+		{
+			return getObjectTypeName() + " " + QString::number(number + 1);
+		}
 
 
-/// /////////// ///
-/// EVENTS POST ///
-/// /////////// ///
+		/// /////////// ///
+		/// EVENTS POST ///
+		/// /////////// ///
 
-void SynthEmilionComponent::sendParameterChangeEventBool(SQU::Comm::ParameterType parameterType, bool value)
-{
-	SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
-	event->message->parameterValue.boolValue = value;
+		void SynthEmilionComponent::sendParameterChangeEventBool(Comm::ParameterType parameterType, bool value)
+		{
+			SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
+			event->message->parameterValue.boolValue = value;
 
-	QApplication::postEvent(this, event);
-}
+			QApplication::postEvent(this, event);
+		}
 
-void SynthEmilionComponent::sendParameterChangeEventInt(SQU::Comm::ParameterType parameterType, int value)
-{
-	SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
-	event->message->parameterValue.intValue = value;
+		void SynthEmilionComponent::sendParameterChangeEventInt(Comm::ParameterType parameterType, int value)
+		{
+			SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
+			event->message->parameterValue.intValue = value;
 
-	QApplication::postEvent(this, event);
-}
+			QApplication::postEvent(this, event);
+		}
 
-void SynthEmilionComponent::sendParameterChangeEventDouble(SQU::Comm::ParameterType parameterType, double value)
-{
-	SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
-	event->message->parameterValue.doubleValue = value;
+		void SynthEmilionComponent::sendParameterChangeEventDouble(Comm::ParameterType parameterType, double value)
+		{
+			SynthEmilionEvent *event = new SynthEmilionEvent(componentType, getNumber(), parameterType);
+			event->message->parameterValue.doubleValue = value;
 
-	QApplication::postEvent(this, event);
+			QApplication::postEvent(this, event);
+		}
+	}
 }

@@ -4,14 +4,17 @@
 #include "../Components/SynthEmilionComponent.h"
 #include "ui_global.h"
 
-class ComponentFocusEvent : public QEvent
-{
-public:
-	ComponentFocusEvent(SynthEmilionComponent *component);
-	~ComponentFocusEvent();
+namespace SQU {
+	namespace UI {
+		class ComponentFocusEvent : public QEvent
+		{
+		public:
+			ComponentFocusEvent(SynthEmilionComponent *component);
+			~ComponentFocusEvent();
 
-	static const QEvent::Type ComponentFocusEventType = static_cast<QEvent::Type>(2001);
+			static const QEvent::Type ComponentFocusEventType = static_cast<QEvent::Type>(2001);
 
-	SynthEmilionComponent *component;
-};
-
+			SynthEmilionComponent *component;
+		};
+	}
+}
