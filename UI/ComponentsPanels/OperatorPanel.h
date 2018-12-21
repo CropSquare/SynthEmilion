@@ -1,24 +1,33 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_OperatorPanel.h"
-#include "ComponentPanel.h"
-
-class SynthEmilionComponent;
+#include "../GeneratedFiles/ui_OperatorPanel.h"
+#include "../AudioUtils/CurvePointWidget.h"
 
 namespace SQU {
 	namespace UI {
+		class OperatorComponent;
 
-		class OperatorPanel : public ComponentPanel
+		class OperatorPanel : public QWidget
 		{
 			Q_OBJECT
 
 		public:
-			OperatorPanel(SynthEmilionComponent *linkedOperatorComponent, QWidget *parent = Q_NULLPTR);
+			OperatorPanel(OperatorComponent *linkedOperatorComponent);
 			~OperatorPanel();
+
+			void notifyPitch(int pitch);
 
 		private:
 			Ui::OperatorPanel ui;
+			OperatorComponent* linkedOperatorComponent;
+			int getPitchFromParams(int octave, int note, int fine);
+			void getParamsFromPitch(int pitch, int &octave, int &note, int &fine);
+
+			QHBoxLayout* componentsList_hLayout;
+
+			CurvePointWidget* curvePointWidget;
+			CurvePointWidget* curvePointWidget2;
 		};
 	}
 }

@@ -8,8 +8,9 @@ namespace SQU {
 		{
 			ui.setupUi(this);
 
-			setObjectName(QString::number(number + 1));
-
+			associatedOperatorPanel = new OperatorPanel(this);
+			associatedPanel = associatedOperatorPanel;
+			
 			setActivationControl(ui.activation_button);
 
 			connect(ui.pitch_dial, SIGNAL(valueChanged(int)), this, SLOT(pitchChangedHandle(int)));
@@ -23,19 +24,27 @@ namespace SQU {
 		{
 		}
 
+		void OperatorComponent::notifyPitch(int pitch)
+		{
+			ui.pitch_dial->setValue(pitch);
+		}
+
 		void OperatorComponent::pitchChangedHandle(int value)
 		{
 			sendParameterChangeEventInt(SQU::Comm::Pitch, value);
+
+			// Notify operator panel
+			associatedOperatorPanel->notifyPitch(value);
 		}
 
 		void OperatorComponent::panChangedHandle(int value)
 		{
-			sendParameterChangeEventInt(SQU::Comm::Pitch, value);
+			sendParameterChangeEventInt(SQU::Comm::Pan, value);
 		}
 
 		void OperatorComponent::volChangedHandle(int value)
 		{
-			sendParameterChangeEventInt(SQU::Comm::Pitch, value);
+			sendParameterChangeEventInt(SQU::Comm::Volume, value);
 		}
 	}
 }

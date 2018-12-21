@@ -13,10 +13,38 @@ namespace SQU {
 			connect(ui.reloadQss_button, SIGNAL(clicked()), this, SLOT(reloadQss()));
 
 
-			opList = new OperatorsListComponent(this);
+			opList = new OperatorsList(this);
+			opList->move(0, ui.activeCompLabel->y() + ui.activeCompLabel->height());
 			opList->show();
 			opList->setEventsReceiver(this);
 
+			envList = new EnvelopesList(this);
+			envList->move(opList->x() + opList->width() + 5, opList->y());
+			envList->show();
+			envList->setEventsReceiver(this);
+
+
+			fltList = new FiltersList(this);
+			fltList->move(opList->x(), envList->y() + envList->height() + 5);
+			fltList->show();
+			fltList->setEventsReceiver(this);
+
+			lfosList = new LfosList(this);
+			lfosList->move(fltList->x() + fltList->width() + 5, fltList->y());
+			lfosList->show();
+			lfosList->setEventsReceiver(this);
+
+
+			mainComponent = new MainComponent(this);
+			mainComponent->move(envList->x() + envList->width() + 5, opList->y());
+			mainComponent->setFixedHeight(lfosList->y() + lfosList->height() - mainComponent->y());
+			mainComponent->show();
+			mainComponent->setEventsReceiver(this);
+
+
+			setFixedWidth(mainComponent->x() + mainComponent->width());
+			setFixedHeight(mainComponent->y() + mainComponent->height());
+			
 			paramEventNb = 0;
 			activeEventNb = 0;
 
@@ -54,6 +82,27 @@ namespace SQU {
 			{
 				activeEventNb++;
 				ui.activeCompLabel->setText("EV " + QString::number(activeEventNb) + " : Component focused: " + component->getObjectFullName());
+
+				if (currentlyFocusedComponent != nullptr && currentlyFocusedComponent->associatedPanel != nullptr)
+				{
+					currentlyFocusedComponent->associatedPanel->setParent(Q_NULLPTR);
+				}
+				
+				if (component->associatedPanel != nullptr)
+				{
+					component->associatedPanel->setParent(this);
+					component->associatedPanel->move(0, mainComponent->y() + mainComponent->height() + 5);
+					component->associatedPanel->setFixedWidth(mainComponent->x() + mainComponent->width());
+					component->associatedPanel->show();
+
+					setFixedHeight(component->associatedPanel->y() + component->associatedPanel->height());
+				}
+				else
+				{
+					setFixedHeight(mainComponent->y() + mainComponent->height());
+				}
+
+				this->resize(this->geometry().width(), this->geometry().height());
 
 				currentlyFocusedComponent = component;
 			}

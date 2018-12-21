@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>EnvelopeComponent</class>
+ <widget class="QWidget" name="EnvelopeComponent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>120</width>
+    <height>170</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EnvelopeComponent</string>
+  </property>
+  <widget class="QSlider" name="attack_slider">
+   <property name="geometry">
+    <rect>
+     <x>5</x>
+     <y>40</y>
+     <width>20</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="attack_label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>30</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>A</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="activation_button">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>75</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Envelope 10</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QSlider" name="decay_slider">
+   <property name="geometry">
+    <rect>
+     <x>35</x>
+     <y>40</y>
+     <width>20</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="decay_label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>30</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>D</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSlider" name="sustain_slider">
+   <property name="geometry">
+    <rect>
+     <x>65</x>
+     <y>40</y>
+     <width>20</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="sustain_label">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>20</y>
+     <width>30</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>S</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QSlider" name="release_slider">
+   <property name="geometry">
+    <rect>
+     <x>95</x>
+     <y>40</y>
+     <width>20</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="release_label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>30</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>R</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QDial" name="attackBend_dial">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>140</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDial" name="decayBend_dial">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>140</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QDial" name="releaseBend_dial">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>140</y>
+     <width>30</width>
+     <height>30</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

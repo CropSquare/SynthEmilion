@@ -12,7 +12,7 @@ namespace SQU {
 	namespace UI {
 		class SynthEmilionComponent;
 
-		class UI_EXPORT  SynthEmilionWidget : public QWidget
+		class UI_EXPORT SynthEmilionWidget : public QWidget
 		{
 			Q_OBJECT
 

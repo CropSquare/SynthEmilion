@@ -2,7 +2,8 @@
 
 #include <QWidget>
 #include "../GeneratedFiles/ui_MainWidget.h"
-#include "../ComponentsLists/OperatorsListComponent.h"
+#include "../Components/SpecializedComponentsList.h"
+#include "../Components/MainComponent.h"
 #include "SynthEmilionWidget.h"
 #include "SynthEmilionMessage.h"
 #include "ui_global.h"
@@ -25,12 +26,16 @@ namespace SQU {
 
 		private:
 			Ui::MainWidget ui;
-			OperatorsListComponent* opList;
+			OperatorsList* opList;
+			EnvelopesList* envList;
+			FiltersList* fltList;
+			LfosList* lfosList;
+			MainComponent* mainComponent;
 
 			int paramEventNb;
 			int activeEventNb;
 
-			SynthEmilionComponent* currentlyFocusedComponent;
+			SynthEmilionComponent* currentlyFocusedComponent = nullptr;
 		};
 	}
 }

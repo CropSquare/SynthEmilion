@@ -7,7 +7,7 @@
 
 namespace SQU {
 	namespace UI {
-		class SynthEmilionComponent : public SynthEmilionWidget
+		class UI_EXPORT SynthEmilionComponent : public SynthEmilionWidget
 		{
 			Q_OBJECT
 
@@ -23,6 +23,8 @@ namespace SQU {
 
 			QString getObjectFullName();
 
+			QWidget *associatedPanel = nullptr;
+
 		protected:
 			void setActivationControl(QAbstractButton *button);
 			Comm::ComponentType componentType;
@@ -35,6 +37,7 @@ namespace SQU {
 			private slots:
 			void activationChangedHandle(bool state);
 			bool eventFilter(QObject *obj, QEvent *event);
+
 
 		private:
 			QString getObjectTypeName();

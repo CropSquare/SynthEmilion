@@ -1,8 +1,6 @@
 #include "SynthEmilionComponent.h"
-
 #include "../Events/ComponentFocusEvent.h"
 #include "../Events/SynthEmilionEvent.h"
-
 
 namespace SQU {
 	namespace UI {
@@ -13,6 +11,8 @@ namespace SQU {
 			this->number = number;
 			this->setProperty("active", false);
 			this->setProperty("alt", number % 2 == 1);
+
+			setObjectName(QString::number(number + 1));
 		}
 
 		SynthEmilionComponent::~SynthEmilionComponent()
@@ -23,12 +23,10 @@ namespace SQU {
 		{
 			switch (componentType)
 			{
-			case SQU::Comm::ComponentType::Main:
-				return "Main";
 			case SQU::Comm::ComponentType::Operator:
 				return "Operator";
-			case SQU::Comm::ComponentType::Envelop:
-				return "Envelop";
+			case SQU::Comm::ComponentType::Envelope:
+				return "Envelope";
 			case SQU::Comm::ComponentType::Filter:
 				return "Filter";
 			case SQU::Comm::ComponentType::LFO:

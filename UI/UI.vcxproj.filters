@@ -40,6 +40,9 @@
     <ClInclude Include="Events\ComponentFocusEvent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Components\SpecializedComponentsList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Global\SynthEmilionWidget.h">
@@ -51,16 +54,31 @@
     <QtMoc Include="Components\OperatorComponent.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ComponentsLists\OperatorsListComponent.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="Global\MainWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="ComponentsPanels\OperatorPanel.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="ComponentsPanels\ComponentPanel.h">
+    <QtMoc Include="Components\ComponentsList.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Components\EnvelopeComponent.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Components\FilterComponent.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Components\LfoComponent.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Components\MainComponent.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AudioUtils\LevelMeterWidget.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AudioUtils\CurvePointWidget.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -72,9 +90,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Components\OperatorComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ComponentsLists\OperatorsListComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Global\MainWidget.cpp">
@@ -89,7 +104,28 @@
     <ClCompile Include="ComponentsPanels\OperatorPanel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ComponentsPanels\ComponentPanel.cpp">
+    <ClCompile Include="Components\ComponentsList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\SpecializedComponentsList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\EnvelopeComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\FilterComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\LfoComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Components\MainComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioUtils\LevelMeterWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioUtils\CurvePointWidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -97,13 +133,25 @@
     <QtUic Include="Components\OperatorComponent.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtUic Include="ComponentsLists\OperatorsListComponent.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
     <QtUic Include="Global\MainWidget.ui">
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="ComponentsPanels\OperatorPanel.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Components\ComponentsList.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Components\EnvelopeComponent.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Components\FilterComponent.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Components\LfoComponent.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Components\MainComponent.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FilterComponent</class>
+ <widget class="QWidget" name="FilterComponent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>120</width>
+    <height>120</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>FilterComponent</string>
+  </property>
+  <widget class="QPushButton" name="activation_button">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>75</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Filter 10</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="type_label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>40</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Type</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="type_comboBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>20</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Low-pass</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Band-pass</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Notch</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>High-pass</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="slope_label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>40</y>
+     <width>40</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Slope</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="slope_comboBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>40</y>
+     <width>80</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>12 dB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>24 dB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>36 dB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>48 dB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>72 dB</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>96 dB</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QDial" name="frequency_dial">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>80</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="accessibleName">
+    <string>Pitch</string>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="invertedAppearance">
+    <bool>false</bool>
+   </property>
+   <property name="invertedControls">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="frequency_label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>40</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>F</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QDial" name="resonance_dial">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>80</y>
+     <width>40</width>
+     <height>40</height>
+    </rect>
+   </property>
+   <property name="accessibleName">
+    <string>Pitch</string>
+   </property>
+   <property name="locale">
+    <locale language="English" country="UnitedStates"/>
+   </property>
+   <property name="invertedAppearance">
+    <bool>false</bool>
+   </property>
+   <property name="invertedControls">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="resonance_label">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>60</y>
+     <width>40</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Q</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

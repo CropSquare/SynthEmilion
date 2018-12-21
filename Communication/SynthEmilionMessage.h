@@ -6,9 +6,9 @@ namespace SQU {
 	namespace Comm {
 
 		enum ComponentType {
-			Main,
+			Main = 0,
 			Operator,
-			Envelop,
+			Envelope,
 			Filter,
 			LFO
 		};
@@ -16,7 +16,7 @@ namespace SQU {
 		enum ParameterType {
 			//====================
 			// Main
-			ComponentActivation,
+			ComponentActivation = 256,
 			Volume,
 			MonoLegato,
 			Portamento,
@@ -28,9 +28,12 @@ namespace SQU {
 			//====================
 			// Envelope
 			Attack,
+			AttackBend,
 			Decay,
+			DecayBend,
 			Sustain,
 			Release,
+			ReleaseBend,
 			//====================
 			// Filter
 			Type,

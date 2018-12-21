@@ -2,6 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_UiViewer.h"
+#include "Global/MainWidget.h"
 
 class UiViewer : public QMainWindow
 {
@@ -10,6 +11,8 @@ class UiViewer : public QMainWindow
 public:
 	UiViewer(QWidget *parent = Q_NULLPTR);
 
+	bool eventFilter(QObject *, QEvent *) override;
 private:
 	Ui::UiViewerClass ui;
+	SQU::UI::MainWidget* mainWidget;
 };

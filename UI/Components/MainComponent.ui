@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainComponent</class>
+ <widget class="QWidget" name="MainComponent">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>148</width>
+    <height>563</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainComponent</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="title_label">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Main</string>
+     </property>
+     <property name="class" stdset="0">
+      <string>title</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="widget" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>130</width>
+       <height>130</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>160000</width>
+       <height>130</height>
+      </size>
+     </property>
+     <widget class="QLabel" name="portamento_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>30</y>
+        <width>90</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Portamento</string>
+      </property>
+     </widget>
+     <widget class="QDial" name="portamento_dial">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>30</y>
+        <width>40</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="maxPolyphony_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>70</y>
+        <width>90</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Max polyphony</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="maxPolyphony_spinBox">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>70</y>
+        <width>40</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>96</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="mainVolume_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>90</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Main volume</string>
+      </property>
+     </widget>
+     <widget class="QDial" name="mainVolume_dial">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>100</y>
+        <width>40</width>
+        <height>30</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="monoLegato_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>90</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Mono legato</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="monoLegato_button">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>5</y>
+        <width>20</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="levelMeterContainer_widget" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

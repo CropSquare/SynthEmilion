@@ -28,16 +28,16 @@ public:
     {
         if (MainWidget->objectName().isEmpty())
             MainWidget->setObjectName(QStringLiteral("MainWidget"));
-        MainWidget->resize(628, 452);
+        MainWidget->resize(628, 380);
         paramChangeLabel = new QLabel(MainWidget);
         paramChangeLabel->setObjectName(QStringLiteral("paramChangeLabel"));
-        paramChangeLabel->setGeometry(QRect(10, 350, 611, 16));
+        paramChangeLabel->setGeometry(QRect(10, 0, 541, 16));
         activeCompLabel = new QLabel(MainWidget);
         activeCompLabel->setObjectName(QStringLiteral("activeCompLabel"));
-        activeCompLabel->setGeometry(QRect(10, 390, 611, 16));
+        activeCompLabel->setGeometry(QRect(10, 20, 541, 16));
         reloadQss_button = new QPushButton(MainWidget);
         reloadQss_button->setObjectName(QStringLiteral("reloadQss_button"));
-        reloadQss_button->setGeometry(QRect(10, 420, 75, 23));
+        reloadQss_button->setGeometry(QRect(554, 0, 70, 40));
 
         retranslateUi(MainWidget);
 

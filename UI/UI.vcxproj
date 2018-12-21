@@ -51,8 +51,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CHARTS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_QUICK_LIB;QT_QUICKWIDGETS_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;UI_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -63,11 +63,11 @@
       <OutputFile>$(OutDir)\$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Chartsd.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Quickd.lib;Qt5QuickWidgetsd.lib;Qt5UiToolsd.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Widgetsd.lib;Qt5Guid.lib;Qt5Chartsd.lib;Qt5PrintSupportd.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CHARTS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_QUICK_LIB;QT_QUICKWIDGETS_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;UI_LIB;_WINDLL</Define>
-      <IncludePath>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
     </QtMoc>
@@ -79,8 +79,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
-      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CHARTS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_QUICK_LIB;QT_QUICKWIDGETS_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;UI_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat />
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
@@ -90,11 +90,11 @@
       <OutputFile>$(OutDir)\$(ProjectName).dll</OutputFile>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>false</GenerateDebugInformation>
-      <AdditionalDependencies>qtmain.lib;Qt5Charts.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Quick.lib;Qt5QuickWidgets.lib;Qt5UiTools.lib;Qt5Widgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmain.lib;Qt5Core.lib;Qt5Widgets.lib;Qt5Gui.lib;Qt5Charts.lib;Qt5PrintSupport.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <QtMoc>
-      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CHARTS_LIB;QT_CORE_LIB;QT_GUI_LIB;QT_QUICK_LIB;QT_QUICKWIDGETS_LIB;QT_UITOOLS_LIB;QT_WIDGETS_LIB;UI_LIB;_WINDLL</Define>
-      <IncludePath>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;%(AdditionalIncludeDirectories)</IncludePath>
+      <Define>UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;%(PreprocessorDefinitions)</Define>
+      <IncludePath>..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport;%(AdditionalIncludeDirectories)</IncludePath>
       <OutputFile>.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</OutputFile>
       <ExecutionDescription>Moc'ing %(Identity)...</ExecutionDescription>
     </QtMoc>
@@ -109,10 +109,39 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists</IncludePath>
     </QtMoc>
-    <QtMoc Include="ComponentsPanels\ComponentPanel.h">
+    <QtMoc Include="Components\ComponentsList.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
     </QtMoc>
+    <QtMoc Include="Components\EnvelopeComponent.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+    </QtMoc>
+    <QtMoc Include="Components\FilterComponent.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+    </QtMoc>
+    <QtMoc Include="Components\LfoComponent.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+    </QtMoc>
+    <QtMoc Include="Components\MainComponent.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels</IncludePath>
+    </QtMoc>
+    <QtMoc Include="AudioUtils\LevelMeterWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;_WINDLL</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;_WINDLL</Define>
+    </QtMoc>
+    <QtMoc Include="AudioUtils\CurvePointWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;_WINDLL</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;_WINDLL</Define>
+    </QtMoc>
+    <ClInclude Include="Components\SpecializedComponentsList.h" />
     <ClInclude Include="Events\SynthEmilionEvent.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists</IncludePath>
@@ -122,10 +151,6 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication</IncludePath>
     </QtMoc>
     <QtMoc Include="Components\OperatorComponent.h">
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components</IncludePath>
-      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components</IncludePath>
-    </QtMoc>
-    <QtMoc Include="ComponentsLists\OperatorsListComponent.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components</IncludePath>
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components</IncludePath>
     </QtMoc>
@@ -140,10 +165,16 @@
     <ClInclude Include="ui_global.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ComponentsPanels\ComponentPanel.cpp" />
+    <ClCompile Include="AudioUtils\CurvePointWidget.cpp" />
+    <ClCompile Include="AudioUtils\LevelMeterWidget.cpp" />
     <ClCompile Include="ComponentsPanels\OperatorPanel.cpp" />
+    <ClCompile Include="Components\ComponentsList.cpp" />
+    <ClCompile Include="Components\EnvelopeComponent.cpp" />
+    <ClCompile Include="Components\FilterComponent.cpp" />
+    <ClCompile Include="Components\LfoComponent.cpp" />
+    <ClCompile Include="Components\MainComponent.cpp" />
+    <ClCompile Include="Components\SpecializedComponentsList.cpp" />
     <ClCompile Include="Events\SynthEmilionEvent.cpp" />
-    <ClCompile Include="ComponentsLists\OperatorsListComponent.cpp" />
     <ClCompile Include="Components\OperatorComponent.cpp" />
     <ClCompile Include="Components\SynthEmilionComponent.cpp" />
     <ClCompile Include="Events\ComponentFocusEvent.cpp" />
@@ -151,8 +182,12 @@
     <ClCompile Include="Global\SynthEmilionWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="ComponentsLists\OperatorsListComponent.ui" />
     <QtUic Include="ComponentsPanels\OperatorPanel.ui" />
+    <QtUic Include="Components\ComponentsList.ui" />
+    <QtUic Include="Components\EnvelopeComponent.ui" />
+    <QtUic Include="Components\FilterComponent.ui" />
+    <QtUic Include="Components\LfoComponent.ui" />
+    <QtUic Include="Components\MainComponent.ui" />
     <QtUic Include="Components\OperatorComponent.ui" />
     <QtUic Include="Global\MainWidget.ui" />
   </ItemGroup>

@@ -5,11 +5,12 @@
 #include "../Global/SynthEmilionWidget.h"
 #include "SynthEmilionComponent.h"
 #include "SynthEmilionMessage.h"
+#include "../ComponentsPanels/OperatorPanel.h"
 #include "ui_global.h"
 
 namespace SQU {
 	namespace UI {
-		class OperatorComponent : public SynthEmilionComponent
+		class UI_EXPORT OperatorComponent : public SynthEmilionComponent
 		{
 			Q_OBJECT
 
@@ -17,13 +18,15 @@ namespace SQU {
 			OperatorComponent(int number, QWidget *parent = Q_NULLPTR);
 			~OperatorComponent();
 
+			void notifyPitch(int pitch);
+
 		private slots:
 			void pitchChangedHandle(int value);
 			void panChangedHandle(int value);
 			void volChangedHandle(int value);
 
 		private:
-
+			OperatorPanel* associatedOperatorPanel;
 			Ui::OperatorComponent ui;
 		};
 	}
