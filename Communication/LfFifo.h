@@ -3,7 +3,7 @@
 #include <vector>
 #include <atomic>
 
-namespace Vignoble {
+namespace SQU {
 	namespace Msg {
 
 		template<typename T>

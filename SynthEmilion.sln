@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SynthEmilion", "SynthEmilion\SynthEmilion.vcxproj", "{0C4964EC-B949-4A0D-81EC-57E0E5D770EA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vst", "Vst\Vst.vcxproj", "{0C4964EC-B949-4A0D-81EC-57E0E5D770EA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73297624-E166-4A84-9D13-331D608DE798}"
 	ProjectSection(SolutionItems) = preProject
