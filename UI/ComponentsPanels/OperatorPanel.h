@@ -2,7 +2,7 @@
 
 #include <QWidget>
 #include "../GeneratedFiles/ui_OperatorPanel.h"
-#include "../AudioUtils/CurvePointWidget.h"
+#include "../AudioUtils/CurveEditorWidget.h"
 
 namespace SQU {
 	namespace UI {
@@ -24,10 +24,7 @@ namespace SQU {
 			int getPitchFromParams(int octave, int note, int fine);
 			void getParamsFromPitch(int pitch, int &octave, int &note, int &fine);
 
-			QHBoxLayout* componentsList_hLayout;
-
-			CurvePointWidget* curvePointWidget;
-			CurvePointWidget* curvePointWidget2;
+			CurveEditorWidget* curveEditor_widget;
 		};
 	}
 }

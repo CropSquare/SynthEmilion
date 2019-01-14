@@ -141,6 +141,12 @@
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE</IncludePath>
       <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;_WINDLL</Define>
     </QtMoc>
+    <QtMoc Include="AudioUtils\CurveEditorWidget.h">
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;_WINDLL</Define>
+      <IncludePath Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists;.\ComponentsPanels;.\AudioWidgets;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;.\AudioUtils;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtPrintSupport</IncludePath>
+      <Define Condition="'$(Configuration)|$(Platform)'=='Release|x64'">UNICODE;_UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_WIDGETS_LIB;UI_LIB;QT_GUI_LIB;QT_CHARTS_LIB;QT_PRINTSUPPORT_LIB;_WINDLL</Define>
+    </QtMoc>
     <ClInclude Include="Components\SpecializedComponentsList.h" />
     <ClInclude Include="Events\SynthEmilionEvent.h">
       <IncludePath Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\Communication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName)\.;$(QTDIR)\include\QtCharts;$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtANGLE;$(QTDIR)\include\QtQuick;$(QTDIR)\include\QtQuickWidgets;$(QTDIR)\include\QtUiTools;$(QTDIR)\include\QtWidgets;.\Global;.\Communication;.\Components;.\ComponentsLists</IncludePath>
@@ -165,6 +171,7 @@
     <ClInclude Include="ui_global.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AudioUtils\CurveEditorWidget.cpp" />
     <ClCompile Include="AudioUtils\CurvePointWidget.cpp" />
     <ClCompile Include="AudioUtils\LevelMeterWidget.cpp" />
     <ClCompile Include="ComponentsPanels\OperatorPanel.cpp" />
@@ -182,6 +189,7 @@
     <ClCompile Include="Global\SynthEmilionWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="AudioUtils\CurveEditorWidget.ui" />
     <QtUic Include="ComponentsPanels\OperatorPanel.ui" />
     <QtUic Include="Components\ComponentsList.ui" />
     <QtUic Include="Components\EnvelopeComponent.ui" />

@@ -10,24 +10,9 @@ namespace SQU {
 
 			this->linkedOperatorComponent = linkedOperatorComponent;
 
-			componentsList_hLayout = new QHBoxLayout(ui.scrollAreaWidgetContents);
-			componentsList_hLayout->setSpacing(0);
-			componentsList_hLayout->setMargin(0);
-
-			curvePointWidget = new CurvePointWidget(nullptr);
-			componentsList_hLayout->addWidget(curvePointWidget, 0, Qt::AlignLeft);
-			curvePointWidget->show();
-
-			curvePointWidget2 = new CurvePointWidget(nullptr);
-			curvePointWidget2->setMathFunction("tan(x)");
-			curvePointWidget2->setFunctionLength(40);
-			curvePointWidget2->setPreviousCurve(curvePointWidget);
-
-			curvePointWidget->setNextCurve(curvePointWidget2);
-
-			componentsList_hLayout->addWidget(curvePointWidget2, 0, Qt::AlignLeft);
-			curvePointWidget2->show();
-			
+			curveEditor_widget = new CurveEditorWidget();
+			ui.horizontalLayout->addWidget(curveEditor_widget, 0, Qt::AlignLeft);
+			curveEditor_widget->show();
 		}
 
 		OperatorPanel::~OperatorPanel()

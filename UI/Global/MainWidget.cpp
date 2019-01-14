@@ -88,21 +88,24 @@ namespace SQU {
 					currentlyFocusedComponent->associatedPanel->setParent(Q_NULLPTR);
 				}
 				
+				int height = mainComponent->y() + mainComponent->height();
+
 				if (component->associatedPanel != nullptr)
 				{
 					component->associatedPanel->setParent(this);
 					component->associatedPanel->move(0, mainComponent->y() + mainComponent->height() + 5);
-					component->associatedPanel->setFixedWidth(mainComponent->x() + mainComponent->width());
+
+					int width = mainComponent->x() + mainComponent->width();
+
+					component->associatedPanel->setFixedWidth(width);
 					component->associatedPanel->show();
 
-					setFixedHeight(component->associatedPanel->y() + component->associatedPanel->height());
-				}
-				else
-				{
-					setFixedHeight(mainComponent->y() + mainComponent->height());
+					height = component->associatedPanel->y() + component->associatedPanel->height();
 				}
 
-				this->resize(this->geometry().width(), this->geometry().height());
+				setFixedHeight(height);
+
+				//this->resize(this->geometry().width(), this->geometry().height());
 
 				currentlyFocusedComponent = component;
 			}

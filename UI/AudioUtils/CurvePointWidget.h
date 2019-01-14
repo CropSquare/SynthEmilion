@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QtCharts>
+#include "tinyexpr.h"
 
 namespace SQU {
 	namespace UI {
@@ -11,42 +12,76 @@ namespace SQU {
 			Q_OBJECT
 
 		public:
-			CurvePointWidget(QWidget *parent);
+			CurvePointWidget(QWidget *parent, int number);
 			~CurvePointWidget();
 
-			static bool isFunctionValid(QString fct);
+			static bool isMathFunctionValid(QString fct);
+			static bool isLengthFunctionValid(QString fct);
 
-			void setMathFunction(QString fct);
-			void setFunctionLength(double length);
-			void setZoom(double zoom);
+			void setCurveFunction(QString fct);
+			void setLengthFunction(QString fct);
+			void setNumber(int num);
+			void setHorizontalScale(double hScale);
+			void setVerticalScale(double vScale);
+			void setScale(double hScale, double vScale);
 
-			QString mathFunction();
-			double functionLength();
-			double zoom();
+			void setCurveAndLengthFunctions(QString curveFct, QString lengthFct);
+
+			int number();
+			QString curveFunction();
+			QString lengthFunction();
+			double length();
+			double horizontalScale();
+			double verticalScale();
 
 			double getLastValue();
 
 			void setPreviousCurve(CurvePointWidget* curve);
 			void setNextCurve(CurvePointWidget* curve);
 
+		signals:
+			void selected(CurvePointWidget* widget);
+
 		protected:
 			void paintEvent(QPaintEvent *event) override;
 
+			void mousePressEvent(QMouseEvent* event) override;
+
 		private:
+
+			const int LINE_WIDTH = 1;
+			const bool DRAW_LINE_ONLY = false;
+			const double CALCULATION_RESOLUTION = 0.01;
+			
 			CurvePointWidget* previousCurve = nullptr;
 			CurvePointWidget* nextCurve = nullptr;
 
-			QString currentMathFunction;
-			double currentFunctionLength;
-			double currentResolution;
-			double currentZoom;
+			void setLength(double length);
+
+			int pointNumber = 0;
+
+			QString currentCurveFunction;
+			QString currentLengthFunction;
+
+			double currentLength;
+			double currentHorizontalScale;
+			double currentVerticalScale;
 
 			std::vector<double> functionValues;
 
-			void adaptWidth();
+			void adaptSize();
 
 			void calculateValues();
 			double getValueForTime(double time);
+
+			QPixmap curveImage;
+			bool imageIsGenerated = false;
+			void generateCurveImage();
+
+			int heightOnLastPaint = 0;
+
+			double currentCalcTime = 0;
+			te_expr *currentFunctionEval = nullptr;
 		};
 	}
 }
