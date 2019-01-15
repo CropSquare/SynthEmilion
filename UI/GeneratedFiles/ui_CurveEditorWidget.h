@@ -26,14 +26,11 @@ class Ui_CurveEditorWidget
 {
 public:
     QVBoxLayout *verticalLayout;
-    QScrollArea *operatorCurve_scrollArea;
+    QScrollArea *curve_scrollArea;
     QWidget *scrollAreaWidgetContents;
     QHBoxLayout *horizontalLayout;
     QLabel *wavePreset_label;
     QComboBox *wavePreset_comboBox;
-    QLabel *zoom_label;
-    QPushButton *zoomMinus_pushButton;
-    QPushButton *zoomPlus_pushButton;
     QLabel *currentPoint_label;
     QLineEdit *currentPointFunction_lineEdit;
     QLabel *currentPointLength_label;
@@ -53,20 +50,20 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SetDefaultConstraint);
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        operatorCurve_scrollArea = new QScrollArea(CurveEditorWidget);
-        operatorCurve_scrollArea->setObjectName(QStringLiteral("operatorCurve_scrollArea"));
+        curve_scrollArea = new QScrollArea(CurveEditorWidget);
+        curve_scrollArea->setObjectName(QStringLiteral("curve_scrollArea"));
         QSizePolicy sizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(operatorCurve_scrollArea->sizePolicy().hasHeightForWidth());
-        operatorCurve_scrollArea->setSizePolicy(sizePolicy);
-        operatorCurve_scrollArea->setWidgetResizable(true);
+        sizePolicy.setHeightForWidth(curve_scrollArea->sizePolicy().hasHeightForWidth());
+        curve_scrollArea->setSizePolicy(sizePolicy);
+        curve_scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 868, 366));
-        operatorCurve_scrollArea->setWidget(scrollAreaWidgetContents);
+        curve_scrollArea->setWidget(scrollAreaWidgetContents);
 
-        verticalLayout->addWidget(operatorCurve_scrollArea);
+        verticalLayout->addWidget(curve_scrollArea);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(5);
@@ -96,29 +93,6 @@ public:
         wavePreset_comboBox->setMaximumSize(QSize(16777215, 20));
 
         horizontalLayout->addWidget(wavePreset_comboBox);
-
-        zoom_label = new QLabel(CurveEditorWidget);
-        zoom_label->setObjectName(QStringLiteral("zoom_label"));
-        sizePolicy1.setHeightForWidth(zoom_label->sizePolicy().hasHeightForWidth());
-        zoom_label->setSizePolicy(sizePolicy1);
-
-        horizontalLayout->addWidget(zoom_label);
-
-        zoomMinus_pushButton = new QPushButton(CurveEditorWidget);
-        zoomMinus_pushButton->setObjectName(QStringLiteral("zoomMinus_pushButton"));
-        sizePolicy1.setHeightForWidth(zoomMinus_pushButton->sizePolicy().hasHeightForWidth());
-        zoomMinus_pushButton->setSizePolicy(sizePolicy1);
-        zoomMinus_pushButton->setMaximumSize(QSize(30, 16777215));
-
-        horizontalLayout->addWidget(zoomMinus_pushButton);
-
-        zoomPlus_pushButton = new QPushButton(CurveEditorWidget);
-        zoomPlus_pushButton->setObjectName(QStringLiteral("zoomPlus_pushButton"));
-        sizePolicy1.setHeightForWidth(zoomPlus_pushButton->sizePolicy().hasHeightForWidth());
-        zoomPlus_pushButton->setSizePolicy(sizePolicy1);
-        zoomPlus_pushButton->setMaximumSize(QSize(30, 16777215));
-
-        horizontalLayout->addWidget(zoomPlus_pushButton);
 
         currentPoint_label = new QLabel(CurveEditorWidget);
         currentPoint_label->setObjectName(QStringLiteral("currentPoint_label"));
@@ -196,9 +170,6 @@ public:
         wavePreset_comboBox->setItemText(4, QApplication::translate("CurveEditorWidget", "White noise", nullptr));
         wavePreset_comboBox->setItemText(5, QApplication::translate("CurveEditorWidget", "Pink noise", nullptr));
 
-        zoom_label->setText(QApplication::translate("CurveEditorWidget", "Zoom", nullptr));
-        zoomMinus_pushButton->setText(QApplication::translate("CurveEditorWidget", "-", nullptr));
-        zoomPlus_pushButton->setText(QApplication::translate("CurveEditorWidget", "+", nullptr));
         currentPoint_label->setText(QApplication::translate("CurveEditorWidget", "Point 1", nullptr));
         currentPointLength_label->setText(QApplication::translate("CurveEditorWidget", "Length", nullptr));
         currentPointDataValidation_pushButton->setText(QApplication::translate("CurveEditorWidget", "V", nullptr));

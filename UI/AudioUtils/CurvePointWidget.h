@@ -18,9 +18,10 @@ namespace SQU {
 			static bool isMathFunctionValid(QString fct);
 			static bool isLengthFunctionValid(QString fct);
 
+			void setNumber(int num);
+			void setSelected(bool isSelected);
 			void setCurveFunction(QString fct);
 			void setLengthFunction(QString fct);
-			void setNumber(int num);
 			void setHorizontalScale(double hScale);
 			void setVerticalScale(double vScale);
 			void setScale(double hScale, double vScale);
@@ -28,6 +29,7 @@ namespace SQU {
 			void setCurveAndLengthFunctions(QString curveFct, QString lengthFct);
 
 			int number();
+			bool selected();
 			QString curveFunction();
 			QString lengthFunction();
 			double length();
@@ -40,7 +42,7 @@ namespace SQU {
 			void setNextCurve(CurvePointWidget* curve);
 
 		signals:
-			void selected(CurvePointWidget* widget);
+			void clicked(CurvePointWidget* widget);
 
 		protected:
 			void paintEvent(QPaintEvent *event) override;
@@ -60,6 +62,7 @@ namespace SQU {
 
 			int pointNumber = 0;
 
+			bool currentSelected;
 			QString currentCurveFunction;
 			QString currentLengthFunction;
 
@@ -74,11 +77,12 @@ namespace SQU {
 			void calculateValues();
 			double getValueForTime(double time);
 
-			QPixmap curveImage;
-			bool imageIsGenerated = false;
-			void generateCurveImage();
-
-			int heightOnLastPaint = 0;
+			QPixmap curvePixmap;
+			QPainterPath* linePainterPath = nullptr;
+			QPainterPath* brushPainterPath = nullptr;
+			bool pixmapNeedsGeneration = true;
+			void generatePaintersPath();
+			void generateCurvePixmap();
 
 			double currentCalcTime = 0;
 			te_expr *currentFunctionEval = nullptr;

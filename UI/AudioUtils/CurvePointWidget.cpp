@@ -7,41 +7,32 @@ namespace SQU {
 		{
 			pointNumber = number;
 			currentHorizontalScale = 10;
-			currentVerticalScale = 1;
+			currentVerticalScale = 10;
 			setCurveAndLengthFunctions("sin(x)", "2*pi()");
 		}
 
 		void CurvePointWidget::mousePressEvent(QMouseEvent* event)
 		{
-			emit selected(this);
+			emit clicked(this);
 		}
 
 		void CurvePointWidget::paintEvent(QPaintEvent *event)
 		{
-			if (imageIsGenerated)
+			if (pixmapNeedsGeneration)
 			{
-				if (heightOnLastPaint != height())
-				{
-					heightOnLastPaint = height();
-					generateCurveImage();
-				}
-
-				QPainter painter(this);
-				painter.drawPixmap(0, 0, curveImage);
+				generateCurvePixmap();
 			}
+
+			QPainter painter(this);
+			painter.drawPixmap(0, 0, curvePixmap);
 		}
 
-		void CurvePointWidget::generateCurveImage()
+		void CurvePointWidget::generatePaintersPath()
 		{
-			imageIsGenerated = false;
-
-			QPainterPath* linePainterPath = nullptr;
-			QPainterPath* brushPainterPath = nullptr;
-
-			double heightFactor = (height() - LINE_WIDTH) / 2;
+			pixmapNeedsGeneration = true;
 
 			linePainterPath = nullptr;
-			brushPainterPath = new QPainterPath(QPoint(0, height()));
+			brushPainterPath = new QPainterPath(QPoint(0,2));
 
 			std::vector<double>::iterator it;
 			double x = 0.0;
@@ -52,14 +43,14 @@ namespace SQU {
 
 			if (previousCurve != nullptr)
 			{
-				linePainterPath = new QPainterPath(QPoint(x, LINE_WIDTH + heightFactor - (previousCurve->getLastValue() * heightFactor)));
+				linePainterPath = new QPainterPath(QPoint(x, -previousCurve->getLastValue() + 1));
 			}
 
 			for (it = functionValues.begin(); it != functionValues.end(); it++)
 			{
 				oneValueParsed = true;
 
-				double y = LINE_WIDTH + heightFactor - (*it * heightFactor);
+				double y = -(*it) + 1;
 
 				if (linePainterPath == nullptr)
 				{
@@ -82,23 +73,37 @@ namespace SQU {
 
 			if (oneValueParsed)
 			{
-				brushPainterPath->lineTo(x + 10, lastY);
-				brushPainterPath->lineTo(x + 10, height());
+				brushPainterPath->lineTo(x + 5, lastY);
+				brushPainterPath->lineTo(x + 5, 2);
+			}
+			else
+			{
+				linePainterPath = nullptr;
+			}
+		}
 
-				curveImage = QPixmap(width(), height());
-				
-				QPainter painter(&curveImage);
+		void CurvePointWidget::generateCurvePixmap()
+		{
+			curvePixmap = QPixmap(currentLength * currentHorizontalScale, currentVerticalScale * 2);
+
+			if (linePainterPath != nullptr)
+			{
+				QPainter painter(&curvePixmap);
 				painter.setRenderHint(QPainter::Antialiasing);
-				painter.scale(currentHorizontalScale, 1);
+				painter.scale(currentHorizontalScale, currentVerticalScale);
 
 				if (!DRAW_LINE_ONLY)
 				{
+					QColor bCol = currentSelected ? QColor(255, 180, 180) : QColor(180, 180, 255);
+
 					painter.setPen(Qt::PenStyle::NoPen);
-					painter.setBrush(QBrush(QColor(180, 180, 255)));
+					painter.setBrush(QBrush(bCol));
 					painter.drawPath(*brushPainterPath);
 				}
 
-				QPen pen(Qt::blue);
+				QColor lCol = currentSelected ? Qt::red : Qt::blue;
+
+				QPen pen(lCol);
 				pen.setWidth(LINE_WIDTH);
 				pen.setStyle(Qt::PenStyle::SolidLine);
 				pen.setCapStyle(Qt::PenCapStyle::SquareCap);
@@ -108,10 +113,9 @@ namespace SQU {
 				painter.setPen(pen);
 				painter.setBrush(Qt::BrushStyle::NoBrush);
 				painter.drawPath(*linePainterPath);
-
-
-				imageIsGenerated = true;
 			}
+
+			pixmapNeedsGeneration = false;
 		}
 
 		CurvePointWidget::~CurvePointWidget()
@@ -121,6 +125,19 @@ namespace SQU {
 		void CurvePointWidget::setNumber(int num)
 		{
 			this->pointNumber = num;
+		}
+
+
+		void CurvePointWidget::setSelected(bool isSelected)
+		{
+			if (isSelected != currentSelected)
+			{
+				currentSelected = isSelected;
+				
+				pixmapNeedsGeneration = true;
+
+				repaint();
+			}
 		}
 
 		void CurvePointWidget::setPreviousCurve(CurvePointWidget* curve)
@@ -140,10 +157,10 @@ namespace SQU {
 		bool CurvePointWidget::isMathFunctionValid(QString fct)
 		{
 			double x;
-			te_variable vars[] = { { "x", &x }, { "pi", &std::_Pi } };
+			te_variable vars[] = { { "x", &x } };
 
 			int err;
-			te_expr *n = te_compile(fct.toStdString().c_str(), vars, 2, &err);
+			te_expr *n = te_compile(fct.toStdString().c_str(), vars, 1, &err);
 
 			if (n) {
 				return true;
@@ -211,8 +228,10 @@ namespace SQU {
 			if (length != currentLength)
 			{
 				currentLength = length;
-				adaptSize();
+				
 				calculateValues();
+
+				adaptSize();
 			}
 		}
 
@@ -271,6 +290,10 @@ namespace SQU {
 			setMinimumWidth(currentLength * currentHorizontalScale);
 			setMaximumWidth(currentLength * currentHorizontalScale);
 			setFixedWidth(currentLength * currentHorizontalScale);
+
+			setMinimumHeight(currentVerticalScale * 2);
+			setMaximumHeight(currentVerticalScale * 2);
+			setFixedHeight(currentVerticalScale * 2);
 		}
 
 		void CurvePointWidget::setHorizontalScale(double hScale)
@@ -302,8 +325,10 @@ namespace SQU {
 
 			if (changed)
 			{
+				pixmapNeedsGeneration = true;
+
 				adaptSize();
-				generateCurveImage();
+
 				repaint();
 			}
 		}
@@ -349,7 +374,7 @@ namespace SQU {
 				functionValues.emplace_back(valForTime);
 			}
 
-			generateCurveImage();
+			generatePaintersPath();
 		}
 
 		double CurvePointWidget::getValueForTime(double time)

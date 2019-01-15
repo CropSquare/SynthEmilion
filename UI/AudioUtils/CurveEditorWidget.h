@@ -16,7 +16,7 @@ namespace SQU {
 			~CurveEditorWidget();
 
 		protected:
-			void wheelEvent(QWheelEvent *event) override;
+			bool eventFilter(QObject *object, QEvent *event) override;
 
 		private slots:
 			
@@ -24,9 +24,8 @@ namespace SQU {
 			void deleteCurrentPointHandle();
 			void addNewPointHandle();
 			void selectedPointChangedHandle(CurvePointWidget* point);
-
-			void zoomInCurve();
-			void zoomOutCurve();
+			void functionTextChanged(const QString &);
+			void lengthTextChanged(const QString &);
 
 		private:
 			Ui::CurveEditorWidget ui;
@@ -38,10 +37,13 @@ namespace SQU {
 			std::unique_ptr<CurvePointWidget>& addPoint();
 
 
-			void changeZoom(double zoom);
-			double currentZoom = 10.0;
+			void changeHorizontalZoom(double zoom);
+			double currentHorizontalZoom = 10.0;
 
-			CurvePointWidget* selectedPoint;
+			void changeVerticalZoom(double zoom);
+			double currentVerticalZoom = 1.0;
+
+			CurvePointWidget* selectedPoint = nullptr;
 			void selectedPointChanged(CurvePointWidget* selectedPoint);
 
 		};
